@@ -20,16 +20,32 @@
     <nav>
       <div class="navTop">
         <div class="navItem">
-          <a href="#"><img src="img/logo-resseg2.png" width="100" height="100" alt="Esseg"></a>
+          <div class="logo">
+           <a href="#"><img src="img/logo-resseg2.png" width="100" height="100" alt="Esseg"></a>
+          </div>
         </div>
         <div class="navItem">
-          <div class="search">
+          <div class="search" id="search">
             <input type="text" placeholder="Buscar..." class="searchInput">
             <img src="./img/search.png" alt="" class="searchIcon">
           </div>
         </div>
-      </div>
-      <div class="navBottom">
+
+        <div class="menu-topo-direito">
+          <div class="iconeMenu" id="icone-whats">
+           <a href="#"><i class="fa-brands fa-whatsapp fa-2x"></i></a>
+          </div>
+          
+          <div class="iconeMenu" id="icone-user">
+           <a href="#"><i class="fa-regular fa-circle-user fa-2x"></i>
+          </div>
+          <div class="iconeMenu" id="icone-cart">
+           <a href="#"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
+          </div>
+        </div>  
+        
+      </div>  
+      <div class="navBottom" id="navBottom">
         <h3 class="menuItem">MOUTAIN
           <div class="dropdown"><a href="#">Camisas</a><a href="#">Calças</a><a href="#">Bermudas</a></div>
         </h3>
@@ -81,9 +97,20 @@
         <label for="radio2" class="manual-btn"></label>
         <label for="radio3" class="manual-btn"></label>
       </div>
-
     </div>
   </section>
+
+  <div class="banner">
+      <div class="banner-item">
+        <img src="/html/img/banner.jpg" alt="banner">
+        <a href="#" class="banner-text">MOUTAIN</a>
+      </div>
+      <div class="banner-item">
+        <img src="/html/img/banner2.jpg" alt="banner">
+        <a href="https://exemplo2.com" class="banner-text">WORK</a>
+      </div>
+  </div>
+  
 
   <section id="product">
     <div class="productContainer">
