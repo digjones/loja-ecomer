@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-image: url('./img/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;       /* Para a imagem cobrir todo o cabeçalho */
+    background-position: center;  /* Para centralizar a imagem */
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  nav {
+    display: flex;
+    /* Habilita o Flexbox */
+    /* space-between empurra o primeiro item (nav-list) para a esquerda e o último (navItem) para a direita */
+    justify-content: space-between;
+    align-items: center;
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: #23232e;
+    height: 8vh;
+    padding: 0 20px;
+    /* Adiciona um padding nas laterais para que a busca não cole na borda */
+  }
+
+  /* ... (outros estilos) ... */
+
+  .nav-list {
+    /* O Flex Grow faz a lista ocupar todo o espaço restante */
+    flex-grow: 1;
+    /* Transforma a lista em flexbox para centralizar os links dentro dela */
+    display: flex;
+    justify-content: center;
+    /* Centraliza o conteúdo da lista */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* Adiciona margem entre a lista e os outros elementos */
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .nav-list li {
+    letter-spacing: 3px;
+    margin-left: 32px;
+    /* Estilos adicionais para os links */
+    color: rgb(236, 234, 234);
+    /* Adicionado para visualizar os links */
+  }
+
+  .nav-list a {
+    text-decoration: none;
+    color: inherit;
+    /* Garante que a cor do link herde a cor do li */
+  }
+
+  .nav-list a:hover {
+    color: #ffc107;
+    /* Cor amarela ao passar o mouse */
+  }
+
+  .navItem {
+    /* Garante que o item de busca não tenha margem indesejada e se alinhe */
+    margin: 0;
+    /* Garante que o item de busca não cresça */
+    flex-shrink: 0;
+  }
+
+  /* Estilos para a barra de busca (opcional, mas recomendado) */
+  .searchInput {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+
+
+
+  .logo-home-container {
+    /* Centraliza o contêiner horizontalmente na página */
+    margin: 200px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    /* Adiciona o Flexbox para alinhar os itens internos */
+  }
+
+  .logo-item {
+    /* Garante que os itens internos estejam centralizados verticalmente */
+    display: flex;
+    align-items: center;
+  }
+
+  .titulo {
+  text-transform: uppercase;
+  font-weight: bold;
+
+  line-height: 1.2;
+}
+
+.alem {
+  display: block;
+  color: #ffffff;
+  position: relative;
+  left: -20px;  /* MOVE ALÉM PARA A ESQUERDA */
+  
+}
+  
+
+.dolimite {
+  display: block;
+  padding-left: 25px;
+}
+
+
+  
+  .logo-home {
+    /* Adiciona um espaço à direita do logo para separação */
+    padding-right: 15px;
+    /* Adiciona o traço vertical usando um pseudoelemento */
+    position: relative;
+  }
+
+  .logo-home::after {
+    /* Conteúdo do pseudoelemento (o traço) */
+    content: '';
+    /* Posição absoluta para o traço */
+    position: absolute;
+    /* Coloca o traço no canto direito do .logo-home */
+    right: 0;
+    /* Alinha verticalmente no centro */
+    top: 50%;
+    transform: translateY(-50%);
+    /* Define as propriedades do traço */
+    width: 4px;
+    /* Espessura do traço */
+    height: 100px;
+    /* Altura do traço (ajuste conforme o tamanho do logo) */
+    background-color: #ffffff;
+    /* Cor do traço (mude para a cor desejada) */
+  }
+
+
+
+  .banner-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+
+  }
+
+  .banner-item {
+
+    color: rgb(255, 255, 255);
+    font-family: "Roboto Condensed", sans-serif;
+    padding: 40px 60px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+
+
+
+
+
+
+
+
+  /* Se o sublinhado estiver nos links <a> dentro do banner */
+  .banner-item a {
+    text-decoration-thickness: 2px;
+    /* Opcional: define a espessura do traço */
+    text-underline-offset: 20px;
+    /* **CHAVE:** Adiciona 5 pixels de espaço entre o texto e o sublinhado */
+    padding-left: 10px;
+    /* Estende o traço 5px para a esquerda */
+    padding-right: 10px;
+    /* Estende o traço 5px para a direita */
+
+  }
+
+
+  .banner-text {
+    font-size: 2.5em;
+    margin-right: 100px;
+    margin-left: 100px;
+    color: white;
+    display: inline-block;
+    transition: transform 0.3s ease-out, color 0.3s ease-out;
+  }
+
+
+
+  .banner-item:hover .banner-text {
+    transform: scale(1.1);
+    color: #0d0e0e;
+  }
+
+
+  /* Variáveis para fácil personalização */
+  :root {
+    --color-primary: #0b0c0e;
+    /* Azul escuro/quase preto para fundo ou texto principal */
+    --color-secondary: #4e5353;
+    /* Ciano/Teal para destaque e detalhes */
+    --color-text-light: #f8f4f4;
+    /* Branco suave para texto em fundo escuro */
+    --font-heading: 'Poppins', sans-serif;
+    /* Fonte moderna e geométrica */
+    --font-body: 'Roboto', sans-serif;
+    /* Fonte legível e neutra */
+    --shadow-elevation: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* Sombra elegante */
+  }
+
+  /* 1. Estilo Geral da Seção */
+  .mural-info {
+    /* Layout e tamanho */
+    max-width: 1200px;
+    /* Limita a largura para melhor leitura */
+    margin: 40px auto;
+    /* Centraliza a seção na página */
+    padding: 60px 40px;
+    /* Preenchimento interno generoso */
+
+    /* Cores e fundo */
+    background-color: var(--color-primary);
+    /* Fundo escuro elegante */
+    color: var(--color-text-light);
+    /* Texto claro no fundo escuro */
+
+    /* Bordas e efeito visual */
+    border-radius: 12px;
+    /* Cantos levemente arredondados */
+    box-shadow: var(--shadow-elevation);
+    /* Sombra sutil para profundidade */
+
+    /* Garante que o texto dentro não selecione as quebras de linha <p> extras se o HTML for mantido */
+    text-align: center;
+    /* Centraliza o conteúdo (títulos e parágrafo) */
+  }
+
+  /* 2. Estilo do Título Principal (H1) */
+  .mural-info h1 {
+    font-family: var(--font-heading);
+    font-size: 3em;
+    /* Tamanho grande e impactante */
+    font-weight: 700;
+    /* Negrito */
+    text-transform: uppercase;
+    /* Maiúsculas para um visual de performance */
+    letter-spacing: 0.15em;
+    /* Espaçamento entre letras para elegância */
+    margin-bottom: 0.2em;
+    /* Espaçamento menor após o H1 */
+
+    /* Efeito de destaque na cor secundária */
+    color: var(--color-text-light);
+    border-bottom: 3px solid var(--color-secondary);
+    /* Linha de destaque */
+    display: inline-block;
+    /* Ajusta a linha ao redor do texto */
+    padding-bottom: 10px;
+    /* Espaço entre o texto e a linha */
+  }
+
+  /* 3. Estilo do Subtítulo/Corpo (H4) */
+  .mural-info h4 {
+    font-family: var(--font-body);
+    font-size: 1.25em;
+    /* Tamanho confortável para leitura */
+    font-weight: 300;
+    /* Leve para contraste com o H1 */
+    line-height: 1.6;
+    /* Espaçamento entre linhas para melhor leitura */
+    margin-top: 30px;
+    /* Espaço após o H1 */
+    max-width: 800px;
+    /* Largura máxima para a linha do texto */
+    margin-left: auto;
+    /* Centraliza o texto */
+    margin-right: auto;
+
+    /* Destaque sutil para frases-chave */
+    opacity: 0.85;
+    /* Texto um pouco mais suave */
+  }
+
+  /* Opcional: Estiliza as tags <p> dentro do H4, se quiser que elas sejam tratadas como parte do H4 */
+  .mural-info h4 p {
+    margin: 0;
+    /* Remove margem padrão das tags <p> */
+  }
+
+  /* 4. Efeito de Destaque (se quiser enfatizar palavras) */
+  .mural-info h4 strong {
+    color: var(--color-secondary);
+    /* Usa a cor de destaque para ênfase */
+    font-weight: 500;
+  }
+
+  /* 5. Responsividade (para telas menores) */
+  @media (max-width: 768px) {
+    .mural-info {
+      padding: 40px 20px;
+      margin: 20px 10px;
+    }
+
+    .mural-info h1 {
+      font-size: 2em;
+      letter-spacing: 0.1em;
+    }
+
+    .mural-info h4 {
+      font-size: 1em;
+    }
+  }
+.secao-vantagens-dark {
+    background: #0d0d0f;
+    padding: 80px 20px;
+}
+
+ .cards-dark {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 70px 30px;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .card-item {
+    background: #141417;
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all .35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  /* Ícones modernos SVG */
+  .card-icon img {
+    width: 58px;
+    height: 58px;
+    opacity: .85;
+    filter: drop-shadow(0 2px 6px rgba(0, 204, 255, 0.4));
+    transition: .3s ease;
+  }
+
+  .card-item:hover .card-icon img {
+    opacity: 1;
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 12px rgba(0, 204, 255, 0.6));
+  }
+
+  /* Títulos */
+  .card-item h3 {
+    color: #fff;
+    font-size: 1.22rem;
+    margin: 18px 0 10px;
+    font-weight: 600;
+  }
+
+  /* Texto */
+  .card-item p {
+    color: #bcbcbc;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  /* Efeito de brilho diagonal */
+  .card-item::after {
+    content: "";
+    position: absolute;
+    top: -140%;
+    left: -60%;
+    width: 220%;
+    height: 320%;
+    background: linear-gradient(115deg,
+        transparent,
+        rgba(255, 255, 255, 0.08),
+        transparent);
+    transform: rotate(25deg);
+    transition: .8s;
+    pointer-events: none;
+  }
+
+  .card-item:hover::after {
+    top: -20%;
+    left: -30%;
+  }
+
+  /* O restante das regras de estilo (h2, .icone, h3, p e @media) permanece o mesmo. */
+
+  /* Responsividade para telas menores (mantida) */
+  @media (max-width: 900px) {
+    .vantagem-item {
+      width: 100%;
+      /* Ocupa a largura total em telas pequenas */
+      margin: 15px 0;
+      display: block;
+    }
+  }
+
+  /*  Footer Variáveis para fácil personalização */
+:root {
+    --footer-bg-color: #212529; /* Cor de fundo escura */
+    --footer-text-color: #f8f9fa; /* Cor do texto claro */
+    --footer-link-color: #adb5bd; /* Cor dos links */
+    --footer-link-hover-color: #007bff; /* Cor do link ao passar o mouse (azul moderno) */
+}
+
+/* Estilo Base do Footer */
+.footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    padding: 40px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as colunas quebrem */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.footer-section {
+    flex: 1; /* Distribui o espaço igualmente */
+    min-width: 200px; /* Garante que não fique muito estreito */
+    margin-bottom: 30px;
+}
+
+.footer-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--footer-text-color); /* Títulos em destaque */
+}
+
+/* Estilo para Links Rápidos */
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links a {
+    color: var(--footer-link-color);
+    text-decoration: none;
+    line-height: 1.8;
+    transition: color 0.3s;
+}
+
+.quick-links a:hover {
+    color: var(--footer-link-hover-color);
+}
+
+/* Estilo para Ícones Sociais (Placeholder) */
+.icons-container {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--footer-link-color);
+    color: var(--footer-bg-color);
+    border-radius: 50%; /* Formato circular */
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-icon:hover {
+    background-color: var(--footer-link-hover-color);
+    color: var(--footer-text-color);
+}
+
+/* Estilo para Endereço e CNPJ */
+.address-info p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: var(--footer-link-color);
+}
+
+.cnpj {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Estilo da Linha Inferior (Políticas/Termos) */
+.footer-bottom {
+    border-top: 1px solid #3a3f44;
+    padding-top: 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    color: var(--footer-link-color);
+}
+
+.legal-links a {
+    color: var(--footer-link-color);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.legal-links a:hover {
+    color: var(--footer-link-hover-color);
+}
+
+.legal-links span {
+    margin: 0 10px;
+    color: var(--footer-link-color);
+}
+
+/* Adicione estas regras ao seu CSS */
+.footer-logo {
+    /* Garante que a imagem seja responsiva */
+    max-width: 100%; 
+    height: auto; 
+    
+    /* Define um tamanho máximo para que não seja muito grande */
+    width: 150px; 
+    
+    /* Se a seção estiver centralizada (em mobile), centraliza o logo */
+    display: block; 
+    margin: 0 auto; 
+}
+
+/* No CSS que forneci anteriormente, a seção tinha 'text-align: center' no mobile. 
+   O 'margin: 0 auto;' e 'display: block;' acima garantem o alinhamento. */
+
+/* Se você precisar remover o margin-bottom extra da seção original: */
+.logo-space {
+    /* Remove a margem extra, se desejar que o logo fique mais colado ao fundo */
+    margin-bottom: 0; 
+}
+
+/* --- Responsividade (Para telas pequenas) --- */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Colunas se empilham */
+    }
+
+    .footer-section {
+        min-width: 100%;
+        text-align: center; /* Centraliza o conteúdo das seções */
+    }
+
+    .quick-links ul {
+        display: flex; /* Links Rápidos em linha */
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .quick-links li {
+        margin-bottom: 0;
+    }
+
+    .social-icons .icons-container {
+        justify-content: center; /* Centraliza os ícones */
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .legal-links {
+        margin-top: 10px;
+    }
+}
+</style>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="#"><img src="img/logo-resseg.png" width="130" height="auto" alt="Esseg"></a>
+      </div>
+
+      <div class="mobile-menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+
+      <ul class="nav-list">
+        <li><a href="#">SOBRE</a></li>
+        <li><a href="#">CATALAGO</a></li>
+        <li><a href="#">SUPORTE TECNICO</a></li>
+        <li><a href="#">CONTATO</a></li>
+      </ul>
+
+      <div class="navItem">
+        <div class="search" id="search">
+          <input type="text" placeholder="Buscar..." class="searchInput">
+          <img src="./img/searchwhite.png" alt="" class="searchIcon">
+        </div>
+      </div>
+
+    </nav>
+    <div class="logo-home-container">
+      <div class="logo-home logo-item">
+        <a href="#"><img src="img/logo-resseg.png" width="200" height="200" alt="Esseg"></a>
+      </div>
+
+      <h1 class="titulo">
+        <span class="alem">ALÉM</span>
+        <span class="dolimite">DO LIMITE</span>
+      </h1>
+
+    </div> 
+      
+    
+
+    <div class="banner-container">
+      <div class="banner-item">
+        <a href="#" class="banner-text">Work</a>
+      </div>
+      <div class="banner-item">
+        <a href="/html/index.html" class="banner-text" target="_blank">Moutain</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="mural-info">
+    <h1>ESTILO PERFORMANCE E RESISTÊNÇIA</h1>
+    <h4>Nossas vestimentas são projetadas para oferecer conforto, durabilidade e segurança, refletindo os valores
+      e a identidade da sua empresa. Seja para equipes outdoor, esportes de aventura ou atividades que demandam
+      performance, cada peça é cuidadosamente elaborada para atender às mais altas exigências.</p>
+    </h4>
+  </section>
+  <section class="secao-vantagens-dark">
+    <div class="cards-dark">
+      <div class="card-item">
+        <div class="card-icon">
+          <img src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/outline/shield-check.svg"
+            alt="Ícone Durabilidade">
+        </div>
+        <h3>Durabilidade e Qualidade Superior</h3>
+        <p>Material de alta resistência que acompanha o ritmo intenso de trabalho e aventura.</p>
+      </div>
+
+      <div class="card-item">
+        <div class="card-icon">
+          <img src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/outline/sparkles.svg" alt="Ícone Design">
+        </div>
+        <h3>Design Funcional e Moderno</h3>
+        <p>Estilo que une conforto e inovação, valorizando a imagem da sua equipe.</p>
+      </div>
+
+      <div class="card-item">
+        <div class="card-icon">
+          <img src="https://cdn.jsdelivr.net/gh/tabler/tabler-icons/icons/outline/palette.svg"
+            alt="Ícone Personalização">
+        </div>
+        <h3>Personalização Exclusiva</h3>
+        <p>Uniformes que carregam a identidade da sua marca, com opções de customização sob medida.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section quick-links">
+            <h4 class="footer-title">Links Rápidos</h4>
+            <ul>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Work</a></li>
+                <li><a href="#">Mountain</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section social-icons">
+            <h4 class="footer-title">Siga-nos</h4>
+            <div class="icons-container">
+                <a href="#" aria-label="Facebook" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                
+            </div>
+        </div>
+
+        <div class="footer-section address-info">
+            <h4 class="footer-title">Informações</h4>
+            <p>
+                Rua Gen. Carneiro, 153 - Centro<br>
+                Ponta Grossa - PR, 84010-370
+            </p>
+            <p class="cnpj">CNPJ: 00.000.000/0001-00</p>
+        </div>
+
+        <div class="footer-section logo-space">
+          <img src="/html/img/logo-resseg2.png" alt="Logo da Sua Empresa" class="footer-logo">
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Sua Empresa. Todos os direitos reservados.</p>
+        <div class="legal-links">
+            <a href="#">Políticas de Privacidade</a>
+            <span>|</span>
+            <a href="#">Termos de Uso</a>
+        </div>
+    </div>
+</footer>
+
+
+
+
+</body>
+
+</html>

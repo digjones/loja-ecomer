@@ -1,73 +1,81 @@
-
-section.slider{
-    position: relative;
-    z-index: 1;
-    margin:0 auto;
-    width: 100%;
-    height: auto;
-    padding: 0  !important;
-    overflow: hidden;
-
+/* ----------- BASE ----------- */
+section.slider {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 10px; /* opcional, deixa mais bonito */
 }
 
-.slider-content{
-    width: 400%;
-    height: auto;
-    display:flex;
+/* Contêiner geral */
+.slider-content {
+  width: 400%; /* 4 slides = 400% (ajuste conforme sua quantidade) */
+  display: flex;
+  transition: margin-left 0.5s ease-in-out;
 }
 
-.slider-content input, .img-mobile{
-    display: none;
-    
+/* Oculta inputs e imagens mobile inicialmente */
+.slider-content input,
+.img-mobile {
+  display: none;
 }
 
-.slide-box{
-    width: 25%;
-    height: auto;
-    position: relative;
-    text-align: center;
-
+/* Cada slide */
+.slide-box {
+  width: 25%; /* 100% ÷ 4 slides = 25% */
+  position: relative;
+  text-align: center;
+  flex-shrink: 0;
 }
 
-.slide-box img{
-    width: 100%
-}
-
-.nav-manual, .nav-auto{
-    position: absolute;
-    width: 100%;
-    bottom: 20px;
-    margin-top: 30%;
-    display: flex;
-    justify-content: center;
-
-
-}
-.nav-manual .manual-btn, .nav-auto div{
-    border: 1px solid rgb(14, 13, 13);
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.2s;
-
-
-}
-.nav-manual .manual-btn:not(:last-child), .nav-auto div:not(:last-child){
-    margin-right: 10px;
-}
-
-.nav-manual .manual-btn:hover{
-    background-color: #969394ff;
-}
-
-#radio1:checked ~ .nav-auto .auto-btn1, #radio2:checked ~ .nav-auto .auto-btn2, #radio3:checked ~ .nav-auto .auto-btn3 {
-    background-color:rgb(19, 1, 7)
-}
+.slide-box img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* mantém proporção */
  
+}
 
+/* ----------- NAVEGAÇÃO MANUAL / AUTOMÁTICA ----------- */
+.nav-manual,
+.nav-auto {
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
 
+.nav-manual .manual-btn,
+.nav-auto div {
+  border: 1px solid #222;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0.6);
+}
 
-/* Movimentação dos slides */
+.nav-manual .manual-btn:not(:last-child),
+.nav-auto div:not(:last-child) {
+  margin-right: 10px;
+}
+
+.nav-manual .manual-btn:hover {
+  background-color: #555;
+}
+
+#radio1:checked ~ .nav-auto .auto-btn1,
+#radio2:checked ~ .nav-auto .auto-btn2,
+#radio3:checked ~ .nav-auto .auto-btn3 {
+  background-color: #111;
+}
+
+/* ----------- MOVIMENTAÇÃO DOS SLIDES ----------- */
 #radio1:checked ~ .primeiro {
   margin-left: 0%;
 }
@@ -77,23 +85,59 @@ section.slider{
 #radio3:checked ~ .primeiro {
   margin-left: -50%;
 }
+/* se tiver 4 slides:
+#radio4:checked ~ .primeiro { margin-left: -75%; }
+*/
 
-@media (max-width: 768px) {
-  .img-desktop {
-    display: none;
+/* ----------- RESPONSIVIDADE ----------- */
+@media (max-width: 1024px) {
+  section.slider {
+    max-width: 95%;
   }
-  .img-mobile {
-    display: block;
-    width: 100%;
+
+  .nav-manual .manual-btn,
+  .nav-auto div {
+    padding: 7px;
   }
 }
 
-@media (min-width: 769px) {
-  .img-mobile {
+@media (max-width: 768px) {
+  /* Mostra versão mobile */
+  .img-desktop {
     display: none;
   }
-  .img-desktop {
+
+  .img-mobile {
     display: block;
     width: 100%;
+  }
+
+  .slider-content {
+    width: 300%; /* 3 slides = 300% se quiser ajustar */
+  }
+
+  .slide-box {
+    width: 100%;
+  }
+
+  /* Centraliza bolinhas mais próximas */
+  .nav-manual,
+  .nav-auto {
+    bottom: 10px;
+  }
+
+  .nav-manual .manual-btn,
+  .nav-auto div {
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-manual .manual-btn,
+  .nav-auto div {
+    padding: 5px;
+  }
+  .slide-box img {
+    border-radius: 0;
   }
 }

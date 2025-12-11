@@ -1,28 +1,25 @@
-
-
-
-
-
-
-
-
-// --- MENU HAMBÚRGUER ---
-const menuToggle = document.getElementById('menu-toggle');
-const navBottom = document.getElementById('navBottom');
-const menuItems = document.querySelectorAll('.menuItem');
-
-menuToggle.addEventListener('click', () => {
-  navBottom.classList.toggle('active');
-  menuToggle.innerHTML = navBottom.classList.contains('active')
-    ? '<i class="fas fa-times"></i>'  // vira "X"
-    : '<i class="fas fa-bars"></i>';  // volta pro hambúrguer
+// Abrir WhatsApp em nova aba com número pré-definido
+document.getElementById('icone-whats').addEventListener('click', function(e) {
+  e.preventDefault();
+  const phoneNumber = '5511999999999'; // Substitua pelo número desejado com código do país
+  const url = `https://wa.me/${phoneNumber}`;
+  window.open(url, '_blank');
 });
 
-// abre dropdown ao clicar no item no mobile
-menuItems.forEach(item => {
-  item.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      item.classList.toggle('active');
-    }
-  });
+// Exemplo simples de mostrar/ocultar menu do usuário
+document.getElementById('icone-user').addEventListener('click', function(e) {
+  e.preventDefault();
+  alert('Aqui poderia abrir o menu do usuário.');
+  // Ou implemente um dropdown/menu real aqui conforme sua necessidade
 });
+
+// Exemplo simples de abrir o carrinho de compras
+document.getElementById('icone-cart').addEventListener('click', function(e) {
+  e.preventDefault();
+  alert('Aqui poderia abrir o carrinho de compras.');
+  // Ou redirecione para a página do carrinho: window.location.href = '/carrinho';
+});
+
+
+
+

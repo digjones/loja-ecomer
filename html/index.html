@@ -27,7 +27,7 @@
         <div class="navItem">
           <div class="search" id="search">
             <input type="text" placeholder="Buscar..." class="searchInput">
-            <img src="./img/search.png" alt="" class="searchIcon">
+            <img src="./img/searchwhite.png" alt="" class="searchIcon">
           </div>
         </div>
 
@@ -37,14 +37,22 @@
           </div>
           
           <div class="iconeMenu" id="icone-user">
-           <a href="#"><i class="fa-regular fa-circle-user fa-2x"></i>
+           <a href="#"><i class="fa-regular fa-circle-user fa-2x"></i></a>
           </div>
           <div class="iconeMenu" id="icone-cart">
            <a href="#"><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
           </div>
         </div>  
         
-      </div>  
+       
+
+        <div class="hamburger" id="hamburger">
+         <div></div>
+         <div></div>
+         <div></div>
+        </div>
+      </div>
+
       <div class="navBottom" id="navBottom">
         <h3 class="menuItem">MOUTAIN
           <div class="dropdown"><a href="#">Camisas</a><a href="#">Calças</a><a href="#">Bermudas</a></div>
@@ -72,16 +80,16 @@
 
       <!-- SLIDES -->
       <div class="slide-box primeiro">
-        <img class="img-desktop" src="/html/img/slide-1.jpg" alt="slide 1">
-        <img class="img-mobile" src="/html/slide-1-mob.jpg" alt="slide 1">
+        <img class="img-desktop" src="/html/img/slide-1.jpg" alt="">
+        <img class="img-mobile" src="/html/slide-1-mob.jpg" alt="">
       </div>
       <div class="slide-box segundo">
-        <img class="img-desktop" src="/html/img/slide-2.jpg" alt="slide 2">
-        <img class="img-mobile" src="/html/img/slide-2-mob.jpg" alt="slide 2">
+        <img class="img-desktop" src="/html/img/slide-2.jpg" alt="">
+        <img class="img-mobile" src="/html/img/slide-2-mob.jpg" alt="">
       </div>
       <div class="slide-box terceiro">
-        <img class="img-desktop" src="/html/img/slide-3.jpg" alt="slide 3">
-        <img class="img-mobile" src="/html/img/slide-3-mob.jpg" alt="slide 3">
+        <img class="img-desktop" src="/html/img/slide-3.jpg" alt="">
+        <img class="img-mobile" src="/html/img/slide-3-mob.jpg" alt="">
       </div>
 
       <!-- NAV AUTO -->
@@ -161,6 +169,25 @@
 
 
   <script src="/html/scripts/app.js"></script>
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const navBottom = document.getElementById('navBottom');
+  const menuItems = document.querySelectorAll('.menuItem');
+
+  // Abre/fecha o menu ao clicar no hambúrguer
+  hamburger.addEventListener('click', () => {
+    navBottom.classList.toggle('active');
+  });
+
+  // Permite abrir dropdown ao clicar no mobile
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        item.classList.toggle('open');
+      }
+    });
+  });
+</script>
   <script src="/html/scripts/slide.js"></script>
 </body>
 
